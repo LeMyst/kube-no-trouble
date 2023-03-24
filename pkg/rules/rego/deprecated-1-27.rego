@@ -20,13 +20,11 @@ deprecated_resource(r) = api {
 }
 
 deprecated_api(kind, api_version) = api {
-	deprecated_apis = {
-		"CSIStorageCapacity": {
-			"old": ["storage.k8s.io/v1beta1"],
-			"new": "storage.k8s.io/v1",
-			"since": "1.24",
-		},
-	}
+	deprecated_apis = {"CSIStorageCapacity": {
+		"old": ["storage.k8s.io/v1beta1"],
+		"new": "storage.k8s.io/v1",
+		"since": "1.24",
+	}}
 
 	deprecated_apis[kind].old[_] == api_version
 
