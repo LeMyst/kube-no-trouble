@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	ctxKey "github.com/doitintl/kube-no-trouble/pkg/context"
+	ctxKey "github.com/LeMyst/kube-no-trouble/pkg/context"
 )
 
 func mapToCommaSeparatedString(m map[string]interface{}) string {
