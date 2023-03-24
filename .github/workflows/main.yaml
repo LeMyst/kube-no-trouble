@@ -2,9 +2,9 @@ name: main
 on:
   push:
     branches:
-    - master
+      - master
     tags:
-    - "*"
+      - "*"
   pull_request:
 env:
   REGISTRY: ghcr.io
@@ -13,35 +13,35 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.0.2
-      with:
-        set-safe-directory: true
-    - uses: actions/setup-python@v2
-    - uses: pre-commit/action@v2.0.0
+      - uses: actions/checkout@v3.0.2
+        with:
+          set-safe-directory: true
+      - uses: actions/setup-python@v2
+      - uses: pre-commit/action@v2.0.0
   test:
     name: test
     runs-on: ubuntu-latest
     container: golang:1.19.4-alpine3.16
     steps:
-    - name: Install git
-      run: apk add --update --no-cache git
-    - name: Checkout code
-      uses: actions/checkout@v3.0.2
-      with:
-        fetch-depth: 0
-        set-safe-directory: true
-    - name: Test
-      run: |
-        scripts/alpine-setup.sh
-        make test
+      - name: Install git
+        run: apk add --update --no-cache git
+      - name: Checkout code
+        uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+          set-safe-directory: true
+      - name: Test
+        run: |
+          scripts/alpine-setup.sh
+          make test
   build:
     name: build
     runs-on: ubuntu-latest
     container: golang:1.19.4-alpine3.16
     strategy:
       matrix:
-        os: [linux, darwin, windows]
-        arch: [arm64, amd64]
+        os: [ linux, darwin, windows ]
+        arch: [ arm64, amd64 ]
         exclude:
           - os: windows
             arch: arm64
@@ -94,7 +94,7 @@ jobs:
   integration-test:
     name: integration test
     needs:
-      [pre-commit, build, build-docker, test]
+      [ pre-commit, build, build-docker, test ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -108,30 +108,30 @@ jobs:
           "kindest/node:v1.25.3"
         ]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3.0.2
-      with:
-        fetch-depth: 0
-        set-safe-directory: true
-    - uses: actions/download-artifact@v1
-      with:
-        name: release-artifacts-linux-amd64
-        path: release-artifacts
-    - name: Create k8s Kind Cluster
-      uses: helm/kind-action@v1.4.0
-      with:
-        node_image: ${{ matrix.k8s_version }}
-        cluster_name: kubent-test-cluster
-    - name: run integration test
-      run: |
-        tar xvzf release-artifacts/kubent-*-linux-amd64.tar.gz
-        kubectl version --short
-        kubectl cluster-info --context kind-kubent-test-cluster
-        ./kubent
+      - name: Checkout
+        uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+          set-safe-directory: true
+      - uses: actions/download-artifact@v1
+        with:
+          name: release-artifacts-linux-amd64
+          path: release-artifacts
+      - name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.4.0
+        with:
+          node_image: ${{ matrix.k8s_version }}
+          cluster_name: kubent-test-cluster
+      - name: run integration test
+        run: |
+          tar xvzf release-artifacts/kubent-*-linux-amd64.tar.gz
+          kubectl version --short
+          kubectl cluster-info --context kind-kubent-test-cluster
+          ./kubent
   create-release:
     name: Create Release
     needs:
-      [integration-test]
+      [ integration-test ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     outputs:
@@ -159,13 +159,18 @@ jobs:
   push-image:
     name: Push Image
     needs:
-      [create-release]
+      [ create-release ]
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     steps:
+      - name: Change String Case image name
+        id: image_name_case
+        uses: Entepotenz/change-string-case-action-min-dependencies@v1
+        with:
+          string: ${{ env.IMAGE_NAME }}
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Log in to the Container registry
@@ -183,20 +188,20 @@ jobs:
             linux/arm64
             linux/amd64
           tags: |
-            ${{ format('{0}/{1}:{2}', env.REGISTRY, env.IMAGE_NAME, needs.create-release.outputs.tag_name) }}
-            ${{ ( !startsWith(github.ref, 'refs/tags/nightly') && format('{0}/{1}:{2}', env.REGISTRY, env.IMAGE_NAME, 'latest') ) || '' }}
+            ${{ format('{0}/{1}:{2}', env.REGISTRY, steps.image_name_case.outputs.lowercase, needs.create-release.outputs.tag_name) }}
+            ${{ ( !startsWith(github.ref, 'refs/tags/nightly') && format('{0}/{1}:{2}', env.REGISTRY, steps.image_name_case.outputs.lowercase, 'latest') ) || '' }}
           build-args: |
             GITHUB_REF
             GITHUB_SHA
   release-artifacts:
     name: Release Artifacts
     needs:
-      [create-release]
+      [ create-release ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [linux, darwin, windows]
-        arch: [arm64, amd64]
+        os: [ linux, darwin, windows ]
+        arch: [ arm64, amd64 ]
         exclude:
           - os: windows
             arch: arm64
