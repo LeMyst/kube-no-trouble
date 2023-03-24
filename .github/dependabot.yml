@@ -8,9 +8,6 @@ updates:
       time: "10:00"
     commit-message:
       prefix: "dep: Go "
-    reviewers:
-      - "stepanstipl"
-      - "dark0dave"
 
   - package-ecosystem: "docker"
     directory: "/"
@@ -19,6 +16,3 @@ updates:
       time: "10:00"
     commit-message:
       prefix: "dep: Docker "
-    reviewers:
-      - "stepanstipl"
-      - "dark0dave"
