@@ -188,8 +188,6 @@ jobs:
           build-args: |
             GITHUB_REF
             GITHUB_SHA
-          cache-from: type=gha
-          cache-to: type=gha
   release-artifacts:
     name: Release Artifacts
     needs:
