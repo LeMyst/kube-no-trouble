@@ -17,7 +17,7 @@ jobs:
         with:
           set-safe-directory: true
       - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2.0.0
+      - uses: pre-commit/action@v3.0.0
   test:
     name: test
     runs-on: ubuntu-latest
