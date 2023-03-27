@@ -1,4 +1,4 @@
-module github.com/doitintl/kube-no-trouble
+module github.com/LeMyst/kube-no-trouble
 
 go 1.19
 
