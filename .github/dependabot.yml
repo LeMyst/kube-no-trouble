@@ -16,3 +16,11 @@ updates:
       time: "10:00"
     commit-message:
       prefix: "dep: Docker "
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "10:00"
+    commit-message:
+      prefix: "dep: Github Actions "
