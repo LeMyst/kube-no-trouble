@@ -12,6 +12,8 @@ import (
 	"github.com/LeMyst/kube-no-trouble/pkg/printer"
 	"github.com/LeMyst/kube-no-trouble/pkg/rules"
 
+	"k8s.io/klog/v2"
+
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"k8s.io/apimachinery/pkg/runtime/schema"
