@@ -1,14 +1,14 @@
 apiVersion: flowcontrol.apiserver.k8s.io/v1beta1
 kind: PriorityLevelConfiguration
 metadata:
-  name: priority-level-configuration
+  name: workload-medium
 spec:
-  type: Limited
   limited:
-    assuredConcurrencyShares: 5
+    assuredConcurrencyShares: 70
     limitResponse:
       queuing:
         handSize: 6
         queueLengthLimit: 50
         queues: 128
       type: Queue
+  type: Limited
