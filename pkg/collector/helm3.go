@@ -25,7 +25,7 @@ type HelmV3Opts struct {
 	CoreClient      corev1.CoreV1Interface
 }
 
-func NewHelmV3Collector(opts *HelmV3Opts, userAgent string) (*HelmV3Collector, error) {
+func NewHelmV3Collector(opts *HelmV3Opts, namespace string, userAgent string) (*HelmV3Collector, error) {
 	kubeCollector, err := newKubeCollector(opts.Kubeconfig, opts.KubeContext, opts.DiscoveryClient, userAgent)
 	if err != nil {
 		return nil, err
@@ -42,10 +42,10 @@ func NewHelmV3Collector(opts *HelmV3Opts, userAgent string) (*HelmV3Collector, e
 		return nil, err
 	}
 
-	secretsDriver := driver.NewSecrets(collector.client.Secrets(""))
+	secretsDriver := driver.NewSecrets(collector.client.Secrets(namespace))
 	collector.secretsStore = storage.Init(secretsDriver)
 
-	configDriver := driver.NewConfigMaps(collector.client.ConfigMaps(""))
+	configDriver := driver.NewConfigMaps(collector.client.ConfigMaps(namespace))
 	collector.configStore = storage.Init(configDriver)
 
 	return collector, nil

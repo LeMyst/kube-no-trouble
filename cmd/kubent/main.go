@@ -64,12 +64,12 @@ func initCollectors(config *config.Config) []collector.Collector {
 	collectors := []collector.Collector{}
 	if config.Cluster {
 		collector, err := collector.NewClusterCollector(&collector.ClusterOpts{Kubeconfig: config.Kubeconfig, KubeContext: config.Context},
-			config.AdditionalKinds, config.AdditionalAnnotations, generateUserAgent())
+			config.Namespace, config.AdditionalKinds, config.AdditionalAnnotations, generateUserAgent())
 		collectors = storeCollector(collector, err, collectors)
 	}
 
 	if config.Helm3 {
-		collector, err := collector.NewHelmV3Collector(&collector.HelmV3Opts{Kubeconfig: config.Kubeconfig, KubeContext: config.Context}, generateUserAgent())
+		collector, err := collector.NewHelmV3Collector(&collector.HelmV3Opts{Kubeconfig: config.Kubeconfig, KubeContext: config.Context}, config.Namespace, generateUserAgent())
 		collectors = storeCollector(collector, err, collectors)
 	}
 
@@ -115,6 +115,10 @@ func main() {
 
 	log.Info().Msg(">>> Kube No Trouble `kubent` <<<")
 	log.Info().Msgf("version %s (git sha %s)", version, gitSha)
+
+	if len(config.Namespace) > 0 {
+		log.Info().Msgf("Using namespace %s for collectors", config.Namespace)
+	}
 
 	log.Info().Msg("Initializing collectors and retrieving data")
 	initCollectors := initCollectors(config)
