@@ -21,6 +21,7 @@ type ClusterCollector struct {
 	clientSet             dynamic.Interface
 	additionalResources   []schema.GroupVersionResource
 	additionalAnnotations []string
+	namespace             string
 }
 
 type ClusterOpts struct {
@@ -30,7 +31,7 @@ type ClusterOpts struct {
 	DiscoveryClient discovery.DiscoveryInterface
 }
 
-func NewClusterCollector(opts *ClusterOpts, additionalKinds []string, additionalAnnotations []string, userAgent string) (
+func NewClusterCollector(opts *ClusterOpts, namespace string, additionalKinds []string, additionalAnnotations []string, userAgent string) (
 	*ClusterCollector, error) {
 	kubeCollector, err := newKubeCollector(opts.Kubeconfig, opts.KubeContext, opts.DiscoveryClient, userAgent)
 	if err != nil {
@@ -41,6 +42,7 @@ func NewClusterCollector(opts *ClusterOpts, additionalKinds []string, additional
 		kubeCollector:         kubeCollector,
 		commonCollector:       newCommonCollector(CLUSTER_COLLECTOR_NAME),
 		additionalAnnotations: additionalAnnotations,
+		namespace:             namespace,
 	}
 
 	if opts.ClientSet == nil {
@@ -117,7 +119,12 @@ func (c *ClusterCollector) Get() ([]map[string]interface{}, error) {
 
 	var results []map[string]interface{}
 	for _, g := range gvrs {
-		ri := c.clientSet.Resource(g)
+		var ri dynamic.ResourceInterface
+		if len(c.namespace) > 0 {
+			ri = c.clientSet.Resource(g).Namespace(c.namespace)
+		} else {
+			ri = c.clientSet.Resource(g)
+		}
 		log.Debug().Msgf("Retrieving: %s.%s.%s", g.Resource, g.Version, g.Group)
 		rs, err := ri.List(context.Background(), metav1.ListOptions{})
 		if err != nil {
