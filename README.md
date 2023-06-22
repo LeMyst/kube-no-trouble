@@ -25,11 +25,7 @@ particular following tools are supported:
 
 ## Install
 
-Run `sh -c "$(curl -sSL https://git.io/install-kubent)"`.
-
-*(The script will download latest version and unpack to `/usr/local/bin`).*
-
-Or download the
+Download the
 [latest release](https://github.com/LeMyst/kube-no-trouble/releases/latest)
 for your platform and unpack manually.
 
@@ -75,16 +71,17 @@ You can list all the configuration options available using `--help` switch:
 $./kubent -h
 Usage of ./kubent:
   -A, --additional-annotation strings   additional annotations that should be checked to determine the last applied config
-  -a, --additional-kind strings         additional kinds of resources to report in Kind.version.group.com format
-  -c, --cluster                         enable Cluster collector (default true)
-  -x, --context string                  kubeconfig context
-  -e, --exit-error                      exit with non-zero code when issues are found
-  -f, --filename strings                manifests to check, use - for stdin
+  -a, --additional-kind strings         additional kinds of resources to report in Kind.version.group.com format          
+  -c, --cluster                         enable Cluster collector (default true)                                           
+  -x, --context string                  kubeconfig context                                                                
+  -e, --exit-error                      exit with non-zero code when issues are found                                     
+  -f, --filename strings                manifests to check, use - for stdin                                               
       --helm3                           enable Helm v3 collector (default true)
   -k, --kubeconfig string               path to the kubeconfig file
   -l, --log-level string                set log level (trace, debug, info, warn, error, fatal, panic, disabled) (default "info")
+  -n, --namespace strings               namespaces to check (all by default)
   -o, --output string                   output format - [text|json|csv] (default "text")
-  -O, --output-file string        output file, use - for stdout (default "-")
+  -O, --output-file string              output file, use - for stdout (default "-")
   -t, --target-version string           target K8s version in SemVer format (autodetected by default)
   -v, --version                         prints the version of kubent and exits
 ```
