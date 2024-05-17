@@ -11,7 +11,7 @@ require (
 	github.com/rs/zerolog v1.32.0
 	github.com/spf13/pflag v1.0.5
 	helm.sh/helm/v3 v3.15.0
-	k8s.io/apimachinery v0.30.0
+	k8s.io/apimachinery v0.30.1
 	k8s.io/client-go v0.30.0
 	k8s.io/klog/v2 v2.120.1
 )
