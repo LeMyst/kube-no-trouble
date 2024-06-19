@@ -109,10 +109,11 @@ jobs:
           "kindest/node:v1.23.17",
           "kindest/node:v1.24.17",
           "kindest/node:v1.25.16",
-          "kindest/node:v1.26.13",
-          "kindest/node:v1.27.10",
-          "kindest/node:v1.28.6",
-          "kindest/node:v1.29.1"
+          "kindest/node:v1.26.15",
+          "kindest/node:v1.27.13",
+          "kindest/node:v1.28.9",
+          "kindest/node:v1.29.4",
+          "kindest/node:v1.30.0"
         ]
     steps:
       - name: Checkout
