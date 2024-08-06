@@ -7,7 +7,7 @@ toolchain go1.22.2
 require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-version v1.7.0
-	github.com/open-policy-agent/opa v0.67.0
+	github.com/open-policy-agent/opa v0.67.1
 	github.com/rs/zerolog v1.33.0
 	github.com/spf13/pflag v1.0.5
 	helm.sh/helm/v3 v3.15.3
