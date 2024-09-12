@@ -10,20 +10,20 @@ require (
 	github.com/open-policy-agent/opa v0.68.0
 	github.com/rs/zerolog v1.33.0
 	github.com/spf13/pflag v1.0.5
-	helm.sh/helm/v3 v3.15.4
+	helm.sh/helm/v3 v3.16.0
 	k8s.io/apimachinery v0.31.0
 	k8s.io/client-go v0.31.0
 	k8s.io/klog/v2 v2.130.1
 )
 
 require (
-	github.com/Masterminds/semver/v3 v3.2.1 // indirect
+	github.com/Masterminds/semver/v3 v3.3.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/OneOfOne/xxhash v1.2.8 // indirect
 	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
+	github.com/cyphar/filepath-securejoin v0.3.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/emicklei/go-restful/v3 v3.11.1 // indirect
 	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
@@ -43,7 +43,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
-	github.com/jmoiron/sqlx v1.3.5 // indirect
+	github.com/jmoiron/sqlx v1.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
@@ -63,7 +63,7 @@ require (
 	github.com/prometheus/common v0.55.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
-	github.com/rubenv/sql-migrate v1.5.2 // indirect
+	github.com/rubenv/sql-migrate v1.7.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/tchap/go-patricia/v2 v2.3.1 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
@@ -87,7 +87,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/api v0.31.0 // indirect
-	k8s.io/apiextensions-apiserver v0.30.3 // indirect
+	k8s.io/apiextensions-apiserver v0.31.0 // indirect
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340 // indirect
 	k8s.io/utils v0.0.0-20240711033017-18e509b52bc8 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
