@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	ctxKey "github.com/doitintl/kube-no-trouble/pkg/context"
+	ctxKey "github.com/LeMyst/kube-no-trouble/pkg/context"
 )
 
 func TestTypePrinterPrint(t *testing.T) {
