@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/hashicorp/go-version v1.7.0
-	github.com/open-policy-agent/opa v1.4.2
+	github.com/open-policy-agent/opa v1.5.0
 	github.com/rs/zerolog v1.34.0
 	github.com/spf13/pflag v1.0.6
 	helm.sh/helm/v3 v3.18.1
@@ -15,6 +15,7 @@ require (
 )
 
 require (
+	github.com/AdaLogics/go-fuzz-headers v0.0.0-20240806141605-e8a1dd7889d6 // indirect
 	github.com/Masterminds/semver/v3 v3.3.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/agnivade/levenshtein v1.2.1 // indirect
@@ -53,13 +54,14 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.22.0 // indirect
-	github.com/prometheus/client_model v0.6.1 // indirect
+	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.62.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
 	github.com/rubenv/sql-migrate v1.8.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/tchap/go-patricia/v2 v2.3.2 // indirect
+	github.com/vektah/gqlparser/v2 v2.5.26 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
@@ -70,7 +72,7 @@ require (
 	go.opentelemetry.io/otel/metric v1.35.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.35.0 // indirect
 	go.opentelemetry.io/otel/trace v1.35.0 // indirect
-	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/net v0.39.0 // indirect
 	golang.org/x/oauth2 v0.28.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/term v0.31.0 // indirect
