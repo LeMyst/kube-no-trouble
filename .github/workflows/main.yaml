@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v5.0.0
         with:
           set-safe-directory: true
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
       - uses: pre-commit/action@v3.0.1
   test:
     name: test
