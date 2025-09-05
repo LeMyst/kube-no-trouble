@@ -26,7 +26,7 @@ jobs:
         env:
           TAG: ${{ steps.git_tag.outputs.tag }}
       - name: Create tag
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.git.createRef({
