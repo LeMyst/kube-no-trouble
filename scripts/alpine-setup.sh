@@ -4,7 +4,7 @@
 set -eou pipefail
 LC_CTYPE=C
 
-apk add --update --no-cache \
+apk add --no-cache \
 	bash \
 	curl \
 	git \
