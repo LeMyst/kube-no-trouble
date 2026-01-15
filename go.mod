@@ -8,7 +8,7 @@ require (
 	github.com/open-policy-agent/opa v1.12.1
 	github.com/rs/zerolog v1.34.0
 	github.com/spf13/pflag v1.0.10
-	helm.sh/helm/v3 v3.19.4
+	helm.sh/helm/v3 v3.19.5
 	k8s.io/apimachinery v0.35.0
 	k8s.io/client-go v0.35.0
 	k8s.io/klog/v2 v2.130.1
