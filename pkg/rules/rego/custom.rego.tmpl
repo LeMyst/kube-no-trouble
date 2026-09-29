@@ -29,7 +29,8 @@ deprecated_api(kind, api_version) = api {
 {{- end }}
 	}
 
-	deprecated_apis[kind].old[_] == api_version
+	kind_info := get(deprecated_apis, kind, {})
+	kind_info.old[_] == api_version
 	api := {
 		"old": api_version,
 	}
